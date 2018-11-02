@@ -32,29 +32,38 @@ export class LogdnaAccount {
   public async sendLogDnaMessage(logdnaMessageArg: LogdnaMessage) {
     const lm = logdnaMessageArg;
     const euc = encodeURIComponent;
-    
+
     // let construct the request uri
-    const requestUrlWithParams = `${this.baseUrl}?hostname=${euc(
-      lm.options.hostname
-    )}&mac=${euc(lm.options.mac)}&ip=1${euc(lm.options.ip)}&now=${Date.now()}`;
-    
+    const requestUrlWithParams = `${this.baseUrl}?hostname=${euc(lm.options.hostname)}&mac=${euc(
+      lm.options.mac
+    )}&ip=1${euc(lm.options.ip)}&now=${Date.now()}`;
+
+    const requestBodyObject = {
+      lines: [
+        {
+          line: lm.options.line,
+          app: lm.options.app,
+          level: lm.options.level,
+          env: lm.options.env,
+          meta: lm.options.meta,
+          tags: (() => {
+            return lm.options.tags.reduce((reduced, newItem) => {
+              return `${reduced},${newItem}`;
+            });
+          })()
+        }
+      ]
+    };
+
+    console.log(requestBodyObject);
+
     // lets post the message to logdna
     await plugins.smartrequest.postJson(requestUrlWithParams, {
       headers: {
-        'Authorization': this.createBasicAuth(),
-        'charset': 'UTF-8'
+        Authorization: this.createBasicAuth(),
+        charset: 'UTF-8'
       },
-      requestBody: { 
-        "lines": [ 
-          { 
-            "line": lm.options.line,
-            "app": lm.options.app,
-            "level": lm.options.level,
-            "env": lm.options.env,
-            "meta": lm.options.meta
-          }
-        ] 
-     }
+      requestBody: requestBodyObject
     });
   }
 }

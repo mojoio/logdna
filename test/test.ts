@@ -27,4 +27,8 @@ tap.test('should create a standard log message', async () => {
   });
 });
 
+tap.test('should send the message', async () => {
+  await testLogDnaAccount.sendLogDnaMessage(testLogMessage);
+})
+
 tap.start();
