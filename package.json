@@ -1,6 +1,6 @@
 {
   "name": "@mojoio/logdna",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "anunoffical package for the logdna api",
   "main": "dist/index.js",
