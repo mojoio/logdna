@@ -1,3 +1,2 @@
-import * as plugins from './logdna.plugins';
-
-export let standardExport = 'Hi there! :) This is an exported string';
+export * from './logdna.logdnaaccount';
+export * from './logdna.classes.logmessage';

@@ -1,8 +1,19 @@
 import { expect, tap } from '@pushrocks/tapbundle';
-import * as logdna from '../ts/index'
+import * as logdna from '../ts/index';
 
-tap.test('first test', async () => {
-  console.log(logdna.standardExport)
-})
+import { Qenv } from '@pushrocks/qenv';
 
-tap.start()
+const testQenv = new Qenv('./', './.nogit');
+
+let testLogDnaAccount: logdna.LogdnaAccount;
+let testLogMessage: logdna.LogdnaMessage;
+
+tap.test('should create a valid logDna account', async () => {
+  testLogDnaAccount = new logdna.LogdnaAccount();
+});
+
+tap.test('should create a standard log message', async () => {
+  
+});
+
+tap.start();
