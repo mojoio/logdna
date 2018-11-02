@@ -32,9 +32,13 @@ export class LogdnaAccount {
   public async sendLogDnaMessage(logdnaMessageArg: LogdnaMessage) {
     const lm = logdnaMessageArg;
     const euc = encodeURIComponent;
+    
+    // let construct the request uri
     const requestUrlWithParams = `${this.baseUrl}?hostname=${euc(
       lm.options.hostname
     )}&mac=${euc(lm.options.mac)}&ip=1${euc(lm.options.ip)}&now=${Date.now()}`;
+    
+    // lets post the message to logdna
     await plugins.smartrequest.postJson(requestUrlWithParams, {
       headers: {
         'Authorization': this.createBasicAuth(),
@@ -43,15 +47,11 @@ export class LogdnaAccount {
       requestBody: { 
         "lines": [ 
           { 
-            "line":"This is an awesome log statement", 
-            "app":"myapp",
-            "level": "INFO",
-            "env": "production",
-            "meta": {
-              "customfield": {
-                "nestedfield": "nestedvalue"
-              }
-            }
+            "line": lm.options.line,
+            "app": lm.options.app,
+            "level": lm.options.level,
+            "env": lm.options.env,
+            "meta": lm.options.meta
           }
         ] 
      }

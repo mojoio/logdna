@@ -44,7 +44,7 @@ export interface ILogdnaMessageContructorOptions {
   /**
    * any metadata that is used
    */
-  metaData: any;
+  meta: any;
 
   /**
    * an array of strings
@@ -56,21 +56,33 @@ export interface ILogdnaMessageContructorOptions {
  * a basic LogdnaMessage
  */
 export class LogdnaMessage {
+  /**
+   * create lgdna messages from smartlog package
+   * @param smartlogPackageArg
+   */
   static fromSmartLogPackage (smartlogPackageArg: ILogPackage): LogdnaMessage {
     return new LogdnaMessage({
       line: smartlogPackageArg.message,
-      metaData: smartlogPackageArg.logContext,
+      meta: smartlogPackageArg.logContext,
       env: smartlogPackageArg.logContext.environment,
       hostname: smartlogPackageArg.logContext.zone,
       level: smartlogPackageArg.logLevel,
       app: smartlogPackageArg.logContext.zone,
-      tags: [],
+      tags: (() => {
+        const tagArray: string[] = [];
+        tagArray.push(smartlogPackageArg.logContext.company);
+        tagArray.push(smartlogPackageArg.logContext.companyunit);
+        return tagArray;
+      })(),
       ip: '0.0.0.0',
       mac: 'aa:aa:aa:aa:aa:aa'
     });
   };
 
-  options: ILogdnaMessageContructorOptions;
+  /**
+   * the options of this log message
+   */
+  public options: ILogdnaMessageContructorOptions;
   constructor(optionsArg: ILogdnaMessageContructorOptions) {
     this.options = optionsArg;
   };

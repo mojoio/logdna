@@ -24,6 +24,7 @@
   "dependencies": {
     "@pushrocks/smartlog-interfaces": "^1.0.15",
     "@pushrocks/smartrequest": "^1.1.14",
-    "@pushrocks/smartstring": "^3.0.4"
+    "@pushrocks/smartstring": "^3.0.4",
+    "@pushrocks/taskbuffer": "^2.0.5"
   }
 }
