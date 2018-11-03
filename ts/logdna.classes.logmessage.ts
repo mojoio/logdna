@@ -63,15 +63,15 @@ export class LogdnaMessage {
   static fromSmartLogPackage(smartlogPackageArg: ILogPackage): LogdnaMessage {
     return new LogdnaMessage({
       line: smartlogPackageArg.message,
-      meta: smartlogPackageArg.logContext,
-      env: smartlogPackageArg.logContext.environment,
-      hostname: smartlogPackageArg.logContext.zone,
-      level: smartlogPackageArg.logLevel,
-      app: smartlogPackageArg.logContext.zone,
+      meta: smartlogPackageArg.context,
+      env: smartlogPackageArg.context.environment,
+      hostname: smartlogPackageArg.context.zone,
+      level: smartlogPackageArg.level,
+      app: smartlogPackageArg.context.zone,
       tags: (() => {
         const tagArray: string[] = [];
-        tagArray.push(smartlogPackageArg.logContext.company);
-        tagArray.push(smartlogPackageArg.logContext.companyunit);
+        tagArray.push(smartlogPackageArg.context.company);
+        tagArray.push(smartlogPackageArg.context.companyunit);
         return tagArray;
       })(),
       ip: '0.0.0.0',

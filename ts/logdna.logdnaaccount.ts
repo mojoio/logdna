@@ -1,18 +1,19 @@
 import * as plugins from './logdna.plugins';
 
 import { LogdnaMessage } from './logdna.classes.logmessage';
+import { ILogPackage } from '@pushrocks/smartlog-interfaces';
 
 /**
  * the main logdna account
  */
 export class LogdnaAccount {
-  apiKey: string;
-  baseUrl = 'https://logs.logdna.com/logs/ingest';
+  private apiKey: string;
+  private baseUrl = 'https://logs.logdna.com/logs/ingest';
 
   /**
    * Create basic authentication
    */
-  createBasicAuth() {
+  private createBasicAuth() {
     const userNamePasswordString = `${this.apiKey}:`;
     return `Basic ${plugins.smartstring.base64.encode(userNamePasswordString)}`;
   }
@@ -65,5 +66,12 @@ export class LogdnaAccount {
       },
       requestBody: requestBodyObject
     });
+  }
+
+  /**
+   * convenience function for smartlog
+   */
+  async sendSmartlogPackage (smartlogPackageArg: ILogPackage) {
+    this.sendLogDnaMessage(LogdnaMessage.fromSmartLogPackage(smartlogPackageArg));
   }
 }
