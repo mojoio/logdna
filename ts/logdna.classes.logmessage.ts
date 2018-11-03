@@ -63,7 +63,10 @@ export class LogdnaMessage {
   static fromSmartLogPackage(smartlogPackageArg: ILogPackage): LogdnaMessage {
     return new LogdnaMessage({
       line: smartlogPackageArg.message,
-      meta: smartlogPackageArg.context,
+      meta: {
+        ...smartlogPackageArg.context,
+        logType: smartlogPackageArg.type
+      },
       env: smartlogPackageArg.context.environment,
       hostname: smartlogPackageArg.context.zone,
       level: smartlogPackageArg.level,
