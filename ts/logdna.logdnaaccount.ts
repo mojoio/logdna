@@ -55,7 +55,7 @@ export class LogdnaAccount {
       ]
     };
 
-    console.log(requestBodyObject);
+    // console.log(requestBodyObject);
 
     // lets post the message to logdna
     await plugins.smartrequest.postJson(requestUrlWithParams, {
