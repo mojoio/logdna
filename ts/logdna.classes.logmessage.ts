@@ -22,7 +22,7 @@ export interface ILogdnaMessageContructorOptions {
   ip: string;
 
   /**
-   * a text message, that is the core part 
+   * a text message, that is the core part
    */
   line: string;
 
@@ -60,7 +60,7 @@ export class LogdnaMessage {
    * create lgdna messages from smartlog package
    * @param smartlogPackageArg
    */
-  static fromSmartLogPackage (smartlogPackageArg: ILogPackage): LogdnaMessage {
+  static fromSmartLogPackage(smartlogPackageArg: ILogPackage): LogdnaMessage {
     return new LogdnaMessage({
       line: smartlogPackageArg.message,
       meta: smartlogPackageArg.logContext,
@@ -77,7 +77,7 @@ export class LogdnaMessage {
       ip: '0.0.0.0',
       mac: 'aa:aa:aa:aa:aa:aa'
     });
-  };
+  }
 
   /**
    * the options of this log message
@@ -85,5 +85,5 @@ export class LogdnaMessage {
   public options: ILogdnaMessageContructorOptions;
   constructor(optionsArg: ILogdnaMessageContructorOptions) {
     this.options = optionsArg;
-  };
+  }
 }
