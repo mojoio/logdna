@@ -24,7 +24,7 @@ tap.test('should create a standard log message', async () => {
       runtime: 'node',
       zone: 'ship.zone'
     },
-    message: 'this is a awesome log message :)'
+    message: 'this is an awesome log message :)'
   });
 });
 
