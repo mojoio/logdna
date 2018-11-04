@@ -78,9 +78,11 @@ export class LogdnaAccount {
   /**
    * returns a smartlog compatible log destination
    */
-  public smartlogDestination: ILogDestination = {
-    handleLog: (logPackageArg) => {
-      this.sendSmartlogPackage(logPackageArg)
-    }
-  };
+  public get smartlogDestination (): ILogDestination {
+    return {
+      handleLog: (logPackageArg) => {
+        this.sendSmartlogPackage(logPackageArg);
+      }
+    };
+  }
 }
