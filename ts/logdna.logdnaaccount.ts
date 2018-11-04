@@ -1,7 +1,7 @@
 import * as plugins from './logdna.plugins';
 
 import { LogdnaMessage } from './logdna.classes.logmessage';
-import { ILogPackage } from '@pushrocks/smartlog-interfaces';
+import { ILogPackage, ILogDestination } from '@pushrocks/smartlog-interfaces';
 
 /**
  * the main logdna account
@@ -73,5 +73,16 @@ export class LogdnaAccount {
    */
   async sendSmartlogPackage (smartlogPackageArg: ILogPackage) {
     this.sendLogDnaMessage(LogdnaMessage.fromSmartLogPackage(smartlogPackageArg));
+  }
+
+  /**
+   * returns a smartlog compatible log destination
+   */
+  async getSmartlogDestination(): Promise<ILogDestination> {
+    return  {
+      handleLog: (logPackageArg) => {
+        this.sendSmartlogPackage(logPackageArg)
+      }
+    };
   }
 }
