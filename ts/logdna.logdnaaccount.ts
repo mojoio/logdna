@@ -1,29 +1,21 @@
 import * as plugins from './logdna.plugins';
 
 import { LogdnaMessage } from './logdna.classes.logmessage';
+import { LogAggregator } from './logdna.aggregator';
 import { ILogPackage, ILogDestination } from '@pushrocks/smartlog-interfaces';
 
 /**
  * the main logdna account
  */
 export class LogdnaAccount {
-  private apiKey: string;
-  private baseUrl = 'https://logs.logdna.com/logs/ingest';
-
-  /**
-   * Create basic authentication
-   */
-  private createBasicAuth() {
-    const userNamePasswordString = `${this.apiKey}:`;
-    return `Basic ${plugins.smartstring.base64.encode(userNamePasswordString)}`;
-  }
+  private logAggregator: LogAggregator;
 
   /**
    *
    * @param apiKeyArg
    */
   constructor(apiKeyArg: string) {
-    this.apiKey = apiKeyArg;
+    this.logAggregator = new LogAggregator(apiKeyArg);
   }
 
   /**
@@ -35,39 +27,27 @@ export class LogdnaAccount {
     const euc = encodeURIComponent;
 
     // let construct the request uri
-    const requestUrlWithParams = `${this.baseUrl}?hostname=${euc(lm.options.hostname)}&mac=${euc(
+    const requestUrlWithParams = `?hostname=${euc(lm.options.hostname)}&mac=${euc(
       lm.options.mac
-    )}&ip=1${euc(lm.options.ip)}&now=${Date.now()}&tags=${euc(
+    )}&ip=1${euc(lm.options.ip)}&tags=${euc(
       (() => {
         return lm.options.tags.reduce((reduced, newItem) => {
           return `${reduced},${newItem}`;
         });
       })()
     )}`;
-
-    const requestBodyObject = {
-      lines: [
-        {
-          timestamp: lm.options.timestamp,
-          line: lm.options.line,
-          app: lm.options.app,
-          level: lm.options.level,
-          env: lm.options.env,
-          meta: lm.options.meta
-        }
-      ]
+    
+    const logLine = {
+      timestamp: lm.options.timestamp,
+      line: lm.options.line,
+      app: lm.options.app,
+      level: lm.options.level,
+      env: lm.options.env,
+      meta: lm.options.meta
     };
 
-    // console.log(requestBodyObject);
-
-    // lets post the message to logdna
-    await plugins.smartrequest.postJson(requestUrlWithParams, {
-      headers: {
-        Authorization: this.createBasicAuth(),
-        charset: 'UTF-8'
-      },
-      requestBody: requestBodyObject
-    });
+    this.logAggregator.addLog(requestUrlWithParams, logLine);
+    
   }
 
   /**

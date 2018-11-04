@@ -65,7 +65,7 @@ export class LogdnaMessage {
    * create lgdna messages from smartlog package
    * @param smartlogPackageArg
    */
-  static fromSmartLogPackage(smartlogPackageArg: ILogPackage): LogdnaMessage {
+  public static fromSmartLogPackage(smartlogPackageArg: ILogPackage): LogdnaMessage {
     return new LogdnaMessage({
       timestamp: smartlogPackageArg.timestamp,
       line: smartlogPackageArg.message,
