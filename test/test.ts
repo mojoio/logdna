@@ -14,7 +14,8 @@ tap.test('should create a valid logDna account', async () => {
 
 tap.test('should create a standard log message', async () => {
   testLogMessage = logdna.LogdnaMessage.fromSmartLogPackage({
-    type: 'log', 
+    timestamp: Date.now(),
+    type: 'log',
     level: 'info',
     context: {
       company: 'Lossless GmbH',
@@ -24,7 +25,7 @@ tap.test('should create a standard log message', async () => {
       runtime: 'node',
       zone: 'shipzone'
     },
-    message: 'this is an awesome log message :)'
+    message: 'this is an awesome log message sent by the tapbundle test'
   });
 });
 

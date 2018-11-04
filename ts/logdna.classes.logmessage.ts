@@ -7,6 +7,11 @@ import { TLogLevel, TEnvironment, ILogPackage } from '@pushrocks/smartlog-interf
  */
 export interface ILogdnaMessageContructorOptions {
   /**
+   * a timestamp for then the log message was created
+   */
+  timestamp: number;
+
+  /**
    * the hostname where the log message was created
    */
   hostname: string;
@@ -62,6 +67,7 @@ export class LogdnaMessage {
    */
   static fromSmartLogPackage(smartlogPackageArg: ILogPackage): LogdnaMessage {
     return new LogdnaMessage({
+      timestamp: smartlogPackageArg.timestamp,
       line: smartlogPackageArg.message,
       meta: {
         ...smartlogPackageArg.context,

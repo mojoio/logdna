@@ -37,21 +37,23 @@ export class LogdnaAccount {
     // let construct the request uri
     const requestUrlWithParams = `${this.baseUrl}?hostname=${euc(lm.options.hostname)}&mac=${euc(
       lm.options.mac
-    )}&ip=1${euc(lm.options.ip)}&now=${Date.now()}`;
+    )}&ip=1${euc(lm.options.ip)}&now=${Date.now()}&tags=${euc(
+      (() => {
+        return lm.options.tags.reduce((reduced, newItem) => {
+          return `${reduced},${newItem}`;
+        });
+      })()
+    )}`;
 
     const requestBodyObject = {
       lines: [
         {
+          timestamp: lm.options.timestamp,
           line: lm.options.line,
           app: lm.options.app,
           level: lm.options.level,
           env: lm.options.env,
-          meta: lm.options.meta,
-          tags: (() => {
-            return lm.options.tags.reduce((reduced, newItem) => {
-              return `${reduced},${newItem}`;
-            });
-          })()
+          meta: lm.options.meta
         }
       ]
     };
@@ -71,16 +73,16 @@ export class LogdnaAccount {
   /**
    * convenience function for smartlog
    */
-  public async sendSmartlogPackage (smartlogPackageArg: ILogPackage) {
+  public async sendSmartlogPackage(smartlogPackageArg: ILogPackage) {
     this.sendLogDnaMessage(LogdnaMessage.fromSmartLogPackage(smartlogPackageArg));
   }
 
   /**
    * returns a smartlog compatible log destination
    */
-  public get smartlogDestination (): ILogDestination {
+  public get smartlogDestination(): ILogDestination {
     return {
-      handleLog: (logPackageArg) => {
+      handleLog: logPackageArg => {
         this.sendSmartlogPackage(logPackageArg);
       }
     };
