@@ -22,7 +22,7 @@ tap.test('should create a standard log message', async () => {
       containerName: 'ci-mojoio-logdna',
       environment: 'test',
       runtime: 'node',
-      zone: 'ship.zone'
+      zone: 'shipzone'
     },
     message: 'this is an awesome log message :)'
   });

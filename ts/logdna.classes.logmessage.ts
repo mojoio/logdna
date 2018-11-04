@@ -70,7 +70,7 @@ export class LogdnaMessage {
       env: smartlogPackageArg.context.environment,
       hostname: smartlogPackageArg.context.zone,
       level: smartlogPackageArg.level,
-      app: smartlogPackageArg.context.zone,
+      app: smartlogPackageArg.context.containerName,
       tags: (() => {
         const tagArray: string[] = [];
         tagArray.push(smartlogPackageArg.context.company);
