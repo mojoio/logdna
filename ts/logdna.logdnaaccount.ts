@@ -71,18 +71,16 @@ export class LogdnaAccount {
   /**
    * convenience function for smartlog
    */
-  async sendSmartlogPackage (smartlogPackageArg: ILogPackage) {
+  public async sendSmartlogPackage (smartlogPackageArg: ILogPackage) {
     this.sendLogDnaMessage(LogdnaMessage.fromSmartLogPackage(smartlogPackageArg));
   }
 
   /**
    * returns a smartlog compatible log destination
    */
-  async getSmartlogDestination(): Promise<ILogDestination> {
-    return  {
-      handleLog: (logPackageArg) => {
-        this.sendSmartlogPackage(logPackageArg)
-      }
-    };
-  }
+  public smartlogDestination: ILogDestination = {
+    handleLog: (logPackageArg) => {
+      this.sendSmartlogPackage(logPackageArg)
+    }
+  };
 }
