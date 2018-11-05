@@ -62,7 +62,7 @@ logDnaAccount.sendSmartlogPackage(smartlogPackage)
 
 For further information read the linked docs at the top of this README.
 
->  licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
+> MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
 | By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
 
 [![repo-footer](https://mojoio.gitlab.io/assets/repo-footer.svg)](https://mojo.io)
