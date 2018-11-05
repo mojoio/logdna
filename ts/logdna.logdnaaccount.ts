@@ -22,7 +22,7 @@ export class LogdnaAccount {
    * sends a logmessage
    * async, so it returns a Promise. In most cases it does not make sense to wait for it though.
    */
-  public async sendLogDnaMessage(logdnaMessageArg: LogdnaMessage) {
+  public async sendLogdnaMessage(logdnaMessageArg: LogdnaMessage) {
     const lm = logdnaMessageArg;
     const euc = encodeURIComponent;
 
@@ -56,7 +56,7 @@ export class LogdnaAccount {
    * convenience function for smartlog
    */
   public async sendSmartlogPackage(smartlogPackageArg: ILogPackage) {
-    this.sendLogDnaMessage(LogdnaMessage.fromSmartLogPackage(smartlogPackageArg));
+    this.sendLogdnaMessage(LogdnaMessage.fromSmartLogPackage(smartlogPackageArg));
   }
 
   /**

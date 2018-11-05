@@ -49,9 +49,9 @@ const smartlogPackage: ILogPackage = {
     message: 'this is an awesome log message sent by the tapbundle test'
   };
 
-const logDnaMessage = LogdnaMessage.fromSmartLogPackage(smartlogPackage);
+const logdnaMessage = LogdnaMessage.fromSmartLogPackage(smartlogPackage);
 
-logDnaAccount.sendLogDnaMessage(logDnaMessage);
+logDnaAccount.sendLogdnaMessage(logdnaMessage);
 
 // alternatively simply send the smartlogPackage
 // creation of the LogdnaMessage is done for you
