@@ -1,4 +1,4 @@
-# logdna
+# @mojoio/logdna
 anunoffical package for the logdna api
 
 ## Availabililty
