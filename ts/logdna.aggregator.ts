@@ -41,7 +41,7 @@ export class LogAggregator {
   private async sendAggregatedLogs(logCandidate: ILogCandidate) {
     this.logObjectMap.remove(logCandidate);
     // lets post the message to logdna
-    await plugins.smartrequest.postJson(`${this.baseUrl}${logCandidate.urlIdentifier}&now=${Date.now()}` , {
+    const response = await plugins.smartrequest.postJson(`${this.baseUrl}${logCandidate.urlIdentifier}&now=${Date.now()}` , {
       headers: {
         Authorization: this.createBasicAuth(),
         charset: 'UTF-8'
@@ -50,5 +50,8 @@ export class LogAggregator {
         lines: logCandidate.logLines
       }
     });
+    if(response.statusCode !== 200) {
+      console.log(response.body);
+    }
   }
 }

@@ -26,17 +26,20 @@ export class LogdnaAccount {
     const lm = logdnaMessageArg;
     const euc = encodeURIComponent;
 
-    // let construct the request uri
-    const requestUrlWithParams = `?hostname=${euc(lm.options.hostname)}&mac=${euc(
-      lm.options.mac
-    )}&ip=1${euc(lm.options.ip)}&tags=${euc(
+    const uriHostname = euc(lm.options.hostname);
+    const uriMac = euc(lm.options.mac);
+    const uriIp = euc(lm.options.ip);
+    const uriTags = euc(
       (() => {
         return lm.options.tags.reduce((reduced, newItem) => {
           return `${reduced},${newItem}`;
         });
       })()
-    )}`;
-    
+    );
+
+    // let construct the request uri
+    const requestUrlWithParams = `?hostname=${uriHostname}&mac=${uriMac}&ip=1${uriIp}&tags=${uriTags}`;
+
     const logLine = {
       timestamp: lm.options.timestamp,
       line: lm.options.line,
@@ -47,7 +50,6 @@ export class LogdnaAccount {
     };
 
     this.logAggregator.addLog(requestUrlWithParams, logLine);
-    
   }
 
   /**
