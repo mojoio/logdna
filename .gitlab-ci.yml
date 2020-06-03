@@ -54,17 +54,6 @@ testStable:
     - docker
     - priv
 
-testStableWindows:
-  stage: test
-  script:
-    - npmci npm prepare
-    - npmci node install stable
-    - npmci npm install
-    - npmci npm test
-  coverage: /\d+.?\d+?\%\s*coverage/
-  tags:
-    - windows
-
 testBuild:
   stage: test
   script:
