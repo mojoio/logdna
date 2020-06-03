@@ -27,11 +27,11 @@ Platform support | [![Supports Windows 10](https://badgen.net/badge/supports%20W
 
 Use TypeScript for best in class instellisense.
 
-This package is an unofficial package for the logdna. It comes with the following festures:
+This package is an unofficial package for the logdna.com service. It comes with the following features:
 
-- aggregates logs that require the same uri query parameters and sends them as bundle. This ensures the correct order of logs
-- resends logs that failed to send.
-- supports smartlog messages and the smartlog ecosystem
+- aggregate logs that require the same uri query parameters and sends them as bundle. This ensures the correct order of logs within logdna.
+- resend logs that failed to send.
+- support smartlog messages and the smartlog ecosystem
 
 ```typescript
 import { ILogPackage } from '@pushrocks/smartlog-interfaces';
