@@ -68,14 +68,6 @@ logDnaAccount.sendSmartlogPackage(smartlogPackage);
 // most of the above funtions return promises should you want to wait for a log to be fully sent
 ```
 
-For further information read the linked docs at the top of this README.
-
-> MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
-> | By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
-
-[![repo-footer](https://mojoio.gitlab.io/assets/repo-footer.svg)](https://mojo.io)
-
-
 ## Contribution
 
 We are always happy for code contributions. If you are not the code contributing type that is ok. Still, maintaining Open Source repositories takes considerable time and thought. If you like the quality of what we do and our modules are useful to you we would appreciate a little monthly contribution: You can [contribute one time](https://lossless.link/contribute-onetime) or [contribute monthly](https://lossless.link/contribute). :)
