@@ -54,6 +54,22 @@ tap.test('should send in order', async () => {
     testLogDnaAccount.sendSmartlogPackage(testSmartlogMessage);
     i++;
   }
+
+  const testSmartlogMessage: ILogPackage = {
+    timestamp: Date.now(),
+    type: 'log',
+    level: 'warn',
+    context: {
+      company: 'Lossless GmbH',
+      companyunit: 'lossless.cloud',
+      containerName: 'ci-mojoio-logdna',
+      environment: 'test',
+      runtime: 'node',
+      zone: 'shipzone'
+    },
+    message: `this is an awesome log message sent by the tapbundle test #${i}`
+  };
+  testLogDnaAccount.sendSmartlogPackage(testSmartlogMessage);
 });
 
 tap.start();
