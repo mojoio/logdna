@@ -10,7 +10,7 @@ export class LogAggregator {
   private apiKey: string;
   private baseUrl = 'https://logs.logdna.com/logs/ingest';
 
-  private logObjectMap = new plugins.lik.Objectmap<ILogCandidate>();
+  private logObjectMap = new plugins.lik.ObjectMap<ILogCandidate>();
 
   constructor(apiKeyArg: string) {
     this.apiKey = apiKeyArg;
@@ -41,16 +41,19 @@ export class LogAggregator {
   private async sendAggregatedLogs(logCandidate: ILogCandidate) {
     this.logObjectMap.remove(logCandidate);
     // lets post the message to logdna
-    const response = await plugins.smartrequest.postJson(`${this.baseUrl}${logCandidate.urlIdentifier}&now=${Date.now()}` , {
-      headers: {
-        Authorization: this.createBasicAuth(),
-        charset: 'UTF-8'
-      },
-      requestBody: {
-        lines: logCandidate.logLines
+    const response = await plugins.smartrequest.postJson(
+      `${this.baseUrl}${logCandidate.urlIdentifier}&now=${Date.now()}`,
+      {
+        headers: {
+          Authorization: this.createBasicAuth(),
+          charset: 'UTF-8'
+        },
+        requestBody: {
+          lines: logCandidate.logLines
+        }
       }
-    });
-    if(response.statusCode !== 200) {
+    );
+    if (response.statusCode !== 200) {
       console.log(response.body);
     }
   }

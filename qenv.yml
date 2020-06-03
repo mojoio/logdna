@@ -1,2 +1,2 @@
-vars:
+required:
   - LOGDNA_APIKEY

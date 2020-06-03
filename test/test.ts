@@ -10,7 +10,7 @@ let testLogDnaAccount: logdna.LogdnaAccount;
 let testLogMessage: logdna.LogdnaMessage;
 
 tap.test('should create a valid logDna account', async () => {
-  testLogDnaAccount = new logdna.LogdnaAccount(process.env.LOGDNA_APIKEY);
+  testLogDnaAccount = new logdna.LogdnaAccount(testQenv.getEnvVarOnDemand('LOGDNA_APIKEY'));
 });
 
 tap.test('should create a standard log message', async () => {
@@ -54,8 +54,6 @@ tap.test('should send in order', async () => {
     testLogDnaAccount.sendSmartlogPackage(testSmartlogMessage);
     i++;
   }
-  
-  
-})
+});
 
 tap.start();

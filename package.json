@@ -2,9 +2,9 @@
   "name": "@mojoio/logdna",
   "version": "1.0.22",
   "private": false,
-  "description": "anunoffical package for the logdna api",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "description": "an unoffical package for the logdna api",
+  "main": "dist_ts/index.js",
+  "typings": "dist_ts/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
@@ -13,19 +13,31 @@
     "format": "(gitzone format)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.0.22",
-    "@gitzone/tstest": "^1.0.15",
-    "@pushrocks/qenv": "^2.0.2",
-    "@pushrocks/tapbundle": "^3.0.7",
-    "@types/node": "^10.12.2",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0"
+    "@gitzone/tsbuild": "^2.1.24",
+    "@gitzone/tstest": "^1.0.33",
+    "@pushrocks/qenv": "^4.0.6",
+    "@pushrocks/tapbundle": "^3.2.1",
+    "@types/node": "^14.0.9",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
-    "@pushrocks/lik": "^3.0.1",
-    "@pushrocks/smartlog-interfaces": "^2.0.2",
-    "@pushrocks/smartrequest": "^1.1.14",
-    "@pushrocks/smartstring": "^3.0.4",
-    "@pushrocks/taskbuffer": "^2.0.5"
-  }
+    "@pushrocks/lik": "^4.0.13",
+    "@pushrocks/smartlog-interfaces": "^2.0.9",
+    "@pushrocks/smartrequest": "^1.1.47",
+    "@pushrocks/smartstring": "^3.0.18",
+    "@pushrocks/taskbuffer": "^2.1.1"
+  },
+  "files": [
+    "ts/**/*",
+    "ts_web/**/*",
+    "dist/**/*",
+    "dist_*/**/*",
+    "dist_ts/**/*",
+    "dist_ts_web/**/*",
+    "assets/**/*",
+    "cli.js",
+    "npmextra.json",
+    "readme.md"
+  ]
 }

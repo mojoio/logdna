@@ -2,5 +2,16 @@
   "npmci": {
     "npmGlobalTools": [],
     "npmAccessLevel": "public"
+  },
+  "gitzone": {
+    "projectType": "npm",
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "mojoio",
+      "gitrepo": "logdna",
+      "shortDescription": "an unoffical package for the logdna api",
+      "npmPackagename": "@mojoio/logdna",
+      "license": "MIT"
+    }
   }
 }
