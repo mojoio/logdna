@@ -54,7 +54,7 @@ testStable:
     - docker
     - priv
 
-testStable:
+testStableWindows:
   stage: test
   script:
     - npmci npm prepare
