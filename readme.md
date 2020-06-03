@@ -32,6 +32,7 @@ This package is an unofficial package for the logdna.com service. It comes with 
 - aggregate logs that require the same uri query parameters and sends them as bundle. This ensures the correct order of logs within logdna.
 - resend logs that failed to send.
 - support smartlog messages and the smartlog ecosystem
+- support giraffe.cloud ecosystem
 
 ```typescript
 import { ILogPackage } from '@pushrocks/smartlog-interfaces';
