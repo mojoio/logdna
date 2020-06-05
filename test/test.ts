@@ -26,6 +26,10 @@ tap.test('should create a standard log message', async () => {
       runtime: 'node',
       zone: 'shipzone'
     },
+    correlation: {
+      id: '123',
+      type: 'none'
+    },
     message: 'this is an awesome log message sent by the tapbundle test'
   });
 });
@@ -49,7 +53,11 @@ tap.test('should send in order', async () => {
         runtime: 'node',
         zone: 'shipzone'
       },
-      message: `this is an awesome log message sent by the tapbundle test #${i}`
+      message: `this is an awesome log message sent by the tapbundle test #${i}`,
+      correlation: {
+        id: '123',
+        type: 'none'
+      }
     };
     testLogDnaAccount.sendSmartlogPackage(testSmartlogMessage);
     i++;
@@ -67,6 +75,10 @@ tap.test('should send in order', async () => {
       runtime: 'node',
       zone: 'shipzone'
     },
+    correlation: {
+      id: '123',
+      type: 'none'
+    },
     message: `this is an awesome log message sent by the tapbundle test #${i}`
   };
   testLogDnaAccount.sendSmartlogPackage(testSmartlogMessage2);
@@ -82,6 +94,10 @@ tap.test('should send in order', async () => {
       environment: 'test',
       runtime: 'node',
       zone: 'shipzone'
+    },
+    correlation: {
+      id: '123',
+      type: 'none'
     },
     message: `this is an awesome log message sent by the tapbundle test #${i}`
   };

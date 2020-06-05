@@ -71,7 +71,8 @@ export class LogdnaMessage {
       line: smartlogPackageArg.message,
       meta: {
         ...smartlogPackageArg.context,
-        logType: smartlogPackageArg.type
+        logType: smartlogPackageArg.type,
+        correlation: smartlogPackageArg.correlation
       },
       env: smartlogPackageArg.context.environment,
       hostname: smartlogPackageArg.context.zone,

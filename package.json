@@ -17,13 +17,13 @@
     "@gitzone/tstest": "^1.0.33",
     "@pushrocks/qenv": "^4.0.6",
     "@pushrocks/tapbundle": "^3.2.1",
-    "@types/node": "^14.0.9",
+    "@types/node": "^14.0.11",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
     "@pushrocks/lik": "^4.0.13",
-    "@pushrocks/smartlog-interfaces": "^2.0.9",
+    "@pushrocks/smartlog-interfaces": "^2.0.15",
     "@pushrocks/smartrequest": "^1.1.47",
     "@pushrocks/smartstring": "^3.0.18",
     "@pushrocks/taskbuffer": "^2.1.1"
