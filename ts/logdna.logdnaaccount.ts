@@ -37,7 +37,7 @@ export class LogdnaAccount {
             first = false;
             reduced = euc(reduced);
           }
-          return `${reduced},${euc(newItem)})`;
+          return `${reduced},${euc(newItem)}`;
         });
       })()
     )
