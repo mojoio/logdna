@@ -53,9 +53,9 @@ const smartlogPackage: ILogPackage = {
     containerName: 'ci-mojoio-logdna',
     environment: 'test',
     runtime: 'node',
-    zone: 'shipzone'
+    zone: 'shipzone',
   },
-  message: 'this is an awesome log message sent by the tapbundle test'
+  message: 'this is an awesome log message sent by the tapbundle test',
 };
 
 const logdnaMessage = LogdnaMessage.fromSmartLogPackage(smartlogPackage);

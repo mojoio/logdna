@@ -40,7 +40,7 @@ export class LogdnaAccount {
           return `${reduced},${euc(newItem)}`;
         });
       })()
-    )
+    );
 
     // let construct the request uri
     const requestUrlWithParams = `?hostname=${uriHostname}&mac=${uriMac}&ip=1${uriIp}&tags=${uriTags}`;
@@ -51,7 +51,7 @@ export class LogdnaAccount {
       app: lm.options.app,
       level: lm.options.level,
       env: lm.options.env,
-      meta: lm.options.meta
+      meta: lm.options.meta,
     };
 
     this.logAggregator.addLog(requestUrlWithParams, logLine);
@@ -69,9 +69,9 @@ export class LogdnaAccount {
    */
   public get smartlogDestination(): ILogDestination {
     return {
-      handleLog: async logPackageArg => {
+      handleLog: async (logPackageArg) => {
         this.sendSmartlogPackage(logPackageArg);
-      }
+      },
     };
   }
 }

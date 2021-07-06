@@ -73,7 +73,7 @@ export class LogdnaMessage {
         ...smartlogPackageArg.context,
         logType: smartlogPackageArg.type,
         correlation: smartlogPackageArg.correlation,
-        data: smartlogPackageArg.data || {}
+        data: smartlogPackageArg.data || {},
       },
       env: smartlogPackageArg.context.environment,
       hostname: smartlogPackageArg.context.zone,
@@ -86,7 +86,7 @@ export class LogdnaMessage {
         return tagArray;
       })(),
       ip: '0.0.0.0',
-      mac: 'aa:aa:aa:aa:aa:aa'
+      mac: 'aa:aa:aa:aa:aa:aa',
     });
   }
 

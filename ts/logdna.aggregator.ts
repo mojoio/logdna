@@ -25,7 +25,7 @@ export class LogAggregator {
   }
 
   public addLog(urlIdentifierArg: string, logLineArg: any) {
-    let existinglogCandidate = this.logObjectMap.find(logCandidate => {
+    let existinglogCandidate = this.logObjectMap.find((logCandidate) => {
       return logCandidate.urlIdentifier === urlIdentifierArg;
     });
     if (!existinglogCandidate) {
@@ -42,18 +42,15 @@ export class LogAggregator {
     this.logObjectMap.remove(logCandidate);
     // lets post the message to logdna
     const url = `${this.baseUrl}${logCandidate.urlIdentifier}&now=${Date.now()}`;
-    const response = await plugins.smartrequest.postJson(
-      url,
-      {
-        headers: {
-          Authorization: this.createBasicAuth(),
-          charset: 'UTF-8'
-        },
-        requestBody: {
-          lines: logCandidate.logLines
-        }
-      }
-    );
+    const response = await plugins.smartrequest.postJson(url, {
+      headers: {
+        Authorization: this.createBasicAuth(),
+        charset: 'UTF-8',
+      },
+      requestBody: {
+        lines: logCandidate.logLines,
+      },
+    });
     if (response.statusCode !== 200) {
       console.log(response.body);
     }
