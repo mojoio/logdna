@@ -31,11 +31,16 @@ export class LogdnaAccount {
     const uriIp = euc(lm.options.ip);
     const uriTags = euc(
       (() => {
+        let first = true;
         return lm.options.tags.reduce((reduced, newItem) => {
-          return `${reduced},${newItem}`;
+          if (first) {
+            first = false;
+            reduced = euc(reduced);
+          }
+          return `${reduced},euc(${newItem})`;
         });
       })()
-    );
+    )
 
     // let construct the request uri
     const requestUrlWithParams = `?hostname=${uriHostname}&mac=${uriMac}&ip=1${uriIp}&tags=${uriTags}`;
@@ -64,7 +69,7 @@ export class LogdnaAccount {
    */
   public get smartlogDestination(): ILogDestination {
     return {
-      handleLog: logPackageArg => {
+      handleLog: async logPackageArg => {
         this.sendSmartlogPackage(logPackageArg);
       }
     };
